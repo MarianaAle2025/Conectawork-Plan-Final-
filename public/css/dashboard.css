@@ -1,0 +1,16 @@
+body{
+    background:#f4f7fc;
+    font-family:Poppins,sans-serif;
+}
+
+h1{
+    color:#8B5CF6;
+}
+
+.card{
+    width:300px;
+    padding:30px;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}

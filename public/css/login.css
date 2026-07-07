@@ -1,0 +1,275 @@
+/* ===========================
+RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#020617;
+
+}
+
+/* ===========================
+CONTENEDOR
+=========================== */
+
+.contenedor{
+
+    display:grid;
+
+    grid-template-columns:55% 45%;
+
+    min-height:100vh;
+
+}
+
+/* ===========================
+PANEL IZQUIERDO
+=========================== */
+
+.izquierda{
+
+    background:linear-gradient(135deg,#0F172A,#1E293B);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:70px;
+
+}
+
+.contenido{
+
+    max-width:520px;
+
+}
+
+.logo{
+
+    display:inline-block;
+
+    color:#8B5CF6;
+
+    font-weight:600;
+
+    margin-bottom:35px;
+
+    font-size:18px;
+
+}
+
+.contenido h1{
+
+    color:white;
+
+    font-size:52px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+}
+
+.contenido p{
+
+    color:#CBD5E1;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.contenido ul{
+
+    list-style:none;
+
+}
+
+.contenido li{
+
+    color:#E2E8F0;
+
+    margin-bottom:18px;
+
+    font-size:17px;
+
+}
+
+/* ===========================
+PANEL DERECHO
+=========================== */
+
+.derecha{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F8FAFC;
+
+}
+
+/* ===========================
+TARJETA LOGIN
+=========================== */
+
+.card-login{
+
+    width:430px;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+
+}
+
+.card-login h2{
+
+    color:#0F172A;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitulo{
+
+    color:#64748B;
+
+    margin-bottom:35px;
+
+}
+
+/* ===========================
+FORMULARIO
+=========================== */
+
+.grupo{
+
+    margin-bottom:22px;
+
+}
+
+.grupo label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#334155;
+
+    font-weight:500;
+
+}
+
+.grupo input{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #CBD5E1;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.grupo input:focus{
+
+    outline:none;
+
+    border-color:#8B5CF6;
+
+    box-shadow:0 0 0 4px rgba(139,92,246,.15);
+
+}
+
+/* ===========================
+BOTÓN
+=========================== */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#7C3AED;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#6D28D9;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(124,58,237,.35);
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:1000px){
+
+    .contenedor{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .izquierda{
+
+        display:none;
+
+    }
+
+    .card-login{
+
+        width:90%;
+
+        max-width:430px;
+
+    }
+
+}
