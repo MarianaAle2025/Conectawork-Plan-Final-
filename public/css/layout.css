@@ -1,0 +1,697 @@
+@import url("variables.css");
+
+/* ========================================================
+   1. RESET Y ESTILOS BASE
+   ======================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ========================================================
+   2. ESTRUCTURA PRINCIPAL (LAYOUT)
+   ======================================================== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* ========================================================
+   3. BARRA LATERAL (SIDEBAR) - COMPONENTE DETALLADO
+   ======================================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--sidebar);
+    border-right: 1px solid var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+/* Logo */
+.sidebar .logo {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+    gap: 10px;
+}
+
+.sidebar .logo-dot {
+    color: var(--accent);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.sidebar .logo-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text) 50%, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Perfil del colaborador en Sidebar (Optimizado: menos padding) */
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar-lg {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+    background-color: var(--success);
+    border: 2px solid var(--sidebar);
+    box-shadow: 0 0 8px var(--success);
+}
+
+.user-info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-greeting {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+/* Widget de Jornada (Optimizado: más compacto) */
+.jornada-widget {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.clock-display {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--text);
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.btn-jornada {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 3px 10px rgba(6, 182, 212, 0.15);
+    transition: var(--transition);
+}
+
+.btn-jornada:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+}
+
+.btn-jornada.active {
+    background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%);
+    color: var(--text);
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.2);
+}
+
+.btn-jornada.active:hover {
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.35);
+}
+
+.jornada-status {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.jornada-status::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: var(--radius-full);
+    background-color: var(--text-muted);
+}
+
+.jornada-status.active {
+    color: var(--accent);
+}
+
+.jornada-status.active::before {
+    background-color: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+    animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Navegación (Optimizada: menor espaciado para evitar scroll) */
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-full);
+}
+
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 10px;
+}
+
+.sidebar-nav .nav-section {
+    padding: 8px 12px 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1.2px;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    gap: 10px;
+    transition: var(--transition-fast);
+}
+
+.sidebar-nav li a svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: var(--transition-fast);
+}
+
+.sidebar-nav li a:hover {
+    color: var(--text);
+    background-color: var(--sidebar-hover);
+}
+
+.sidebar-nav li.active a {
+    color: var(--text);
+    background: linear-gradient(90deg, var(--primary-light) 0%, rgba(139, 92, 246, 0.01) 100%);
+    border-left: 3px solid var(--primary);
+    font-weight: 600;
+}
+
+.sidebar-nav li.active a svg {
+    color: var(--primary);
+}
+
+/* Menú inferior de logout */
+.sidebar-footer-menu {
+    margin-top: auto;
+    padding: 10px 10px 0;
+    border-top: 1px solid var(--border);
+}
+
+.btn-logout {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: 500;
+    gap: 10px;
+    transition: var(--transition-fast);
+}
+
+.btn-logout:hover {
+    background-color: var(--danger-light);
+    color: #fca5a5;
+}
+
+/* ========================================================
+   4. CONTENEDOR DE CONTENIDO (MAIN)
+   ======================================================== */
+.main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+/* ========================================================
+   5. CABECERA (HEADER)
+   ======================================================== */
+.header {
+    height: var(--header-height);
+    background-color: rgba(15, 21, 36, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+/* Hamburguesa para móviles */
+.btn-toggle-sidebar {
+    display: none;
+    color: var(--text);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    transition: var(--transition-fast);
+}
+
+.btn-toggle-sidebar:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Buscador */
+.header-search {
+    position: relative;
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.header-search .search-icon {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.header-search input {
+    width: 100%;
+    height: 38px;
+    padding: 0 16px 0 38px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text);
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.header-search input:focus {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+/* Panel Derecho de Cabecera */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Notificaciones */
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.btn-icon:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: var(--text-muted);
+}
+
+.badge-pulse {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-full);
+    background-color: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+}
+
+.header-divider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--border);
+}
+
+/* Perfil Rápido */
+.header-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-profile .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.profile-role {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ========================================================
+   6. ÁREA DE CONTENIDO (CONTENT) - ¡RESTAURADO Y MEJORADO!
+   ======================================================== */
+.content {
+    padding: 30px; /* Reducido de 40px para optimizar espacio vertical */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Mayor separación entre secciones sin verse apeñuscado */
+}
+
+/* ========================================================
+   7. PIE DE PÁGINA (FOOTER) - ¡RESTAURADO!
+   ======================================================== */
+.footer {
+    padding: 16px 30px;
+    background-color: var(--sidebar);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.footer-brand {
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* ========================================================
+   8. RESPONSIVIDAD GENERAL
+   ======================================================= */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 70px;
+    }
+    
+    .sidebar .logo-text,
+    .sidebar .user-info-text,
+    .sidebar nav span,
+    .sidebar .btn-jornada-text,
+    .sidebar .clock-display,
+    .sidebar .jornada-status,
+    .sidebar .nav-section {
+        display: none !important;
+    }
+
+    .sidebar .logo {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .sidebar-profile {
+        padding: 16px 0;
+        justify-content: center;
+    }
+
+    .jornada-widget {
+        padding: 12px 0;
+    }
+
+    .sidebar .btn-jornada {
+        width: 38px;
+        height: 38px;
+        border-radius: var(--radius-md);
+        padding: 0;
+        justify-content: center;
+        box-shadow: none;
+    }
+
+    .sidebar .btn-jornada svg {
+        margin: 0;
+        width: 14px;
+        height: 14px;
+    }
+
+    .sidebar-nav ul {
+        padding: 0 6px;
+    }
+
+    .sidebar-nav li a {
+        justify-content: center;
+        padding: 12px 0;
+    }
+
+    .sidebar-nav li.active a {
+        border-left: 3px solid var(--primary);
+        background: var(--sidebar-hover);
+    }
+
+    .sidebar-footer-menu {
+        padding: 10px 6px 0;
+    }
+
+    .btn-logout {
+        justify-content: center;
+        padding: 12px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 0px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        width: 260px;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar.active .logo-text,
+    .sidebar.active .user-info-text,
+    .sidebar.active nav span,
+    .sidebar.active .btn-jornada-text,
+    .sidebar.active .clock-display,
+    .sidebar.active .jornada-status,
+    .sidebar.active .nav-section {
+        display: inline-block !important;
+    }
+
+    .sidebar.active .logo {
+        justify-content: flex-start;
+        padding: 0 20px;
+    }
+
+    .sidebar.active .sidebar-profile {
+        padding: 16px 20px;
+        justify-content: flex-start;
+    }
+
+    .sidebar.active .jornada-widget {
+        padding: 14px 20px;
+    }
+
+    .sidebar.active .btn-jornada {
+        width: 100%;
+        height: auto;
+        padding: 10px 16px;
+        display: flex;
+    }
+
+    .sidebar.active .sidebar-nav ul {
+        padding: 0 10px;
+    }
+
+    .sidebar.active .sidebar-nav li a {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .sidebar.active .btn-logout {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .btn-toggle-sidebar {
+        display: block;
+    }
+
+    .header-search {
+        display: none;
+    }
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .header-date {
+        display: none;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .content {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .footer {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}

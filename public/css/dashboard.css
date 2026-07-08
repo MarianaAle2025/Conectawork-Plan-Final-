@@ -1,16 +1,462 @@
-body{
-    background:#f4f7fc;
-    font-family:Poppins,sans-serif;
+/* ========================================================
+   ESTILOS ESPECÍFICOS DEL DASHBOARD - CONECTAWORK
+   (Optimización de Espaciados e Imagen - Más Aireado)
+   ======================================================== */
+
+/* Cabecera del Dashboard */
+.dashboard-welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-h1{
-    color:#8B5CF6;
+.dashboard-welcome h2 {
+    font-size: 1.6rem; /* Reducido de 1.8rem para mejor balance */
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
 }
 
-.card{
-    width:300px;
-    padding:30px;
-    background:white;
-    border-radius:15px;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
+.dashboard-welcome p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ========================================================
+   FILA DE MÉTRICAS (KPI CARDS) - OPTIMIZADA
+   ======================================================== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px; /* Reducido de 20px para no abrumar */
+    width: 100%;
+}
+
+.metric-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px 20px; /* Optimizado de 24px para reducir altura vertical */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary);
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-md);
+}
+
+.metric-card:hover::before {
+    opacity: 1;
+}
+
+.metric-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metric-label {
+    font-size: 0.72rem; /* Más sutil */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+}
+
+.metric-value {
+    font-size: 1.5rem; /* Más estilizado y compacto */
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+}
+
+.metric-trend {
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.metric-trend.up {
+    color: var(--success);
+}
+
+.metric-trend.down {
+    color: var(--danger);
+}
+
+.metric-trend.neutral {
+    color: var(--text-muted);
+}
+
+.metric-icon-box {
+    width: 42px; /* Reducido de 48px */
+    height: 42px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    background-color: var(--primary-light);
+    transition: var(--transition);
+}
+
+/* Colores específicos de métricas */
+.metric-card:nth-child(1)::before { background-color: var(--primary); }
+.metric-card:nth-child(1) .metric-icon-box { color: var(--primary); background-color: var(--primary-light); }
+
+.metric-card:nth-child(2)::before { background-color: var(--warning); }
+.metric-card:nth-child(2) .metric-icon-box { color: var(--warning); background-color: var(--warning-light); }
+
+.metric-card:nth-child(3)::before { background-color: var(--accent); }
+.metric-card:nth-child(3) .metric-icon-box { color: var(--accent); background-color: var(--accent-light); }
+
+.metric-card:nth-child(4)::before { background-color: var(--success); }
+.metric-card:nth-child(4) .metric-icon-box { color: var(--success); background-color: var(--success-light); }
+
+/* ========================================================
+   SECCIÓN DE ANUNCIOS (4 TARJETAS DEL MOCKUP) - OPTIMIZADA
+   ======================================================== */
+.news-section-header {
+    margin-top: 5px;
+}
+
+.news-section-header h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Reducido de 24px para ganar espacio */
+}
+
+.news-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Encabezado visual (Reducido de 160px a 115px para desahogar la pantalla) */
+.news-card-image {
+    height: 115px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    background: linear-gradient(135deg, #12192c 0%, #20132b 100%);
+    overflow: hidden;
+}
+
+.news-card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(21, 29, 48, 0.98) 0%, rgba(21, 29, 48, 0.25) 100%);
+    z-index: 2;
+}
+
+.news-card-pattern {
+    position: absolute;
+    top: -60%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    border-radius: var(--radius-full);
+    filter: blur(35px);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.news-card:nth-child(1) .news-card-pattern { background: radial-gradient(circle, var(--primary), transparent); }
+.news-card:nth-child(2) .news-card-pattern { background: radial-gradient(circle, var(--accent), transparent); }
+.news-card:nth-child(3) .news-card-pattern { background: radial-gradient(circle, var(--success), transparent); }
+.news-card:nth-child(4) .news-card-pattern { background: radial-gradient(circle, var(--warning), transparent); }
+
+/* Badges sobre la imagen */
+.news-card-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.news-card:nth-child(1) .news-card-badge { color: #c4b5fd; background-color: rgba(139, 92, 246, 0.2); }
+.news-card:nth-child(2) .news-card-badge { color: #a5f3fc; background-color: rgba(6, 182, 212, 0.2); }
+.news-card:nth-child(3) .news-card-badge { color: #a7f3d0; background-color: rgba(16, 185, 129, 0.2); }
+.news-card:nth-child(4) .news-card-badge { color: #fde68a; background-color: rgba(245, 158, 11, 0.2); }
+
+/* Contenido flotante sobre la imagen */
+.news-card-header-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+}
+
+.news-card-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.news-card-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card-tag {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.news-card-title {
+    font-size: 0.95rem; /* Más estilizado */
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+/* Cuerpo de la Tarjeta (Reducido padding y gap) */
+.news-card-body {
+    padding: 16px 20px; /* Reducido de 24px */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Más compacto */
+}
+
+.news-card-desc {
+    font-size: 0.82rem; /* Texto levemente más pequeño y legible */
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Atributos específicos */
+.news-card-extra {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Tarjeta 1: Reunión */
+.meeting-details {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+}
+
+.btn-confirm {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    background-color: var(--primary);
+    color: var(--text);
+    transition: var(--transition-fast);
+}
+
+.btn-confirm:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-confirm.confirmed {
+    background-color: var(--success-light);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+/* Tarjeta 2: Redes Sociales */
+.social-stats {
+    display: flex;
+    gap: 15px;
+}
+
+.social-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-stat-val {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.social-stat-lbl {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.link-social {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Tarjeta 3: Capacitación */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.progress-bar-bg {
+    height: 5px;
+    background-color: var(--border);
+    border-radius: var(--radius-full);
+    width: 100%;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success) 0%, var(--accent) 100%);
+    border-radius: var(--radius-full);
+    width: 65%;
+}
+
+.link-learn {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Tarjeta 4: Bienestar */
+.wellbeing-tip {
+    background-color: rgba(245, 158, 11, 0.04);
+    border: 1px dashed rgba(245, 158, 11, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    color: #fcd34d;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.wellbeing-tip svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    width: 14px;
+    height: 14px;
+}
+
+.link-download {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--warning);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ========================================================
+   RESPONSIVIDAD DEL DASHBOARD
+   ======================================================= */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-welcome h2 {
+        font-size: 1.4rem;
+    }
+
+    .news-card-image {
+        height: 110px;
+    }
 }

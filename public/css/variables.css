@@ -1,0 +1,58 @@
+/* ========================================================
+   VARIABLES GLOBALES - SISTEMA DE DISEÑO CONECTAWORK
+   Tema: Premium Dark (Alto Contraste: Morado & Turquesa)
+   ======================================================== */
+
+:root {
+    /* Paleta de Colores de Fondo (Dark Mode) */
+    --background: #090d16;       /* Fondo de la aplicación */
+    --sidebar: #0f1524;          /* Fondo del panel lateral */
+    --card: #151d30;             /* Fondo de tarjetas y contenedores */
+    --card-hover: #1e2942;       /* Fondo de tarjetas al pasar el cursor */
+
+    /* Colores de Acento e Identidad */
+    --primary: #8b5cf6;          /* Morado principal (Acciones, selección) */
+    --primary-hover: #7c3aed;    /* Morado oscuro para hover */
+    --primary-light: rgba(139, 92, 246, 0.15); /* Morado traslúcido para badges */
+    
+    --accent: #06b6d4;           /* Turquesa principal (Iniciar jornada, detalles) */
+    --accent-hover: #0891b2;     /* Turquesa oscuro para hover */
+    --accent-light: rgba(6, 182, 212, 0.15); /* Turquesa traslúcido */
+
+    /* Estados de Sistema */
+    --success: #10b981;          /* Verde (Activo, éxito) */
+    --success-light: rgba(16, 185, 129, 0.15);
+    
+    --warning: #f59e0b;          /* Ámbar (Pendientes, alertas) */
+    --warning-light: rgba(245, 158, 11, 0.15);
+    
+    --danger: #ef4444;           /* Rojo/Rosa (Incapacidades, cancelar) */
+    --danger-light: rgba(239, 68, 68, 0.15);
+
+    /* Textos (Alto Contraste) */
+    --text: #f8fafc;             /* Texto principal (Blanco brillante) */
+    --text-muted: #94a3b8;       /* Texto secundario/desactivado (Gris azulado) */
+    --text-dark: #0f172a;        /* Texto oscuro (para usar sobre fondos claros/botones) */
+
+    /* Bordes y Líneas */
+    --border: rgba(255, 255, 255, 0.08); /* Borde sutil semi-transparente */
+    --border-focus: rgba(139, 92, 246, 0.4);
+
+    /* Efectos Visuales (Elevación, Radios y Transición) */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+    --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.4);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
+
+    /* Dimensiones Estructurales */
+    --sidebar-width: 280px;
+    --header-height: 80px;
+}
